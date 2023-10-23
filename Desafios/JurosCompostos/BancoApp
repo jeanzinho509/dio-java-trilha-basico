@@ -1,0 +1,26 @@
+import java.text.DecimalFormat;
+import java.util.Scanner;
+
+public class BancoApp {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        double valorInicial = scanner.nextDouble();
+        double taxaJuros = scanner.nextDouble();
+        int periodo = scanner.nextInt();
+        double valorFinal = valorInicial;
+        
+        // Iteração com base no período em anos para calcular o valorFinal com os juros.
+        for (int i = 0; i < periodo; i++) {
+            valorFinal += valorFinal * taxaJuros;
+        }
+
+        // Formatar o valor final com duas casas decimais
+        DecimalFormat df = new DecimalFormat("0.00");
+        String valorFinalFormatado = df.format(valorFinal);
+
+        System.out.println("Valor final do investimento: R$ " + valorFinalFormatado);
+        
+        scanner.close();
+    }
+}
